@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="test">
+        <button type="button" @click="getJson">从后端取json</button>
+        <div class="showJson">{{json}}</div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import {store} from './store'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  computed: {
+    json() {
+      return store.state.json
+    }
+  },
+  methods: {
+    getJson() {
+      store.dispatch("getJson")
+    }
   }
+  
 }
 </script>
 
@@ -25,4 +34,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.showJson{
+    width:500px;
+    margin:10px auto;
+    min-height:500px;
+    background-color: palegreen;
+  }
 </style>

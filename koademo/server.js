@@ -9,14 +9,15 @@ const app = new Koa();
 const router = new Router();
 
 // 提供一个/getJson接口
-router
-    .get('/getJson', async ctx => {
+router.get('/getJson', async ctx => {
         // 后端允许cors跨域请求
-        await cors();
+        // await cors();
         // 返回给前端的数据
         ctx.body = JSON.parse(fs.readFileSync( './static/material.json'));
     
     });
+app.use(cors())
+
 
 // 将koa和两个中间件连起来
 app.use(router.routes()).use(router.allowedMethods());
