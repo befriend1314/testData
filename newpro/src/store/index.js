@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex';
+import axios from 'axios'
 
 Vue.use(Vuex)
 const state = {
@@ -13,23 +14,21 @@ const mutations = {
 }
 
 const actions = {
+  // 调用端getJson接口
   getJson(context){
-    // 调用我们的后端getJson接口
-    fetch('http://127.0.0.1:3000/getJson', {
+    axios.get('http://127.0.0.1:3000/getJson', {
       method: 'GET',
-      mode:'cors',
+      mode: 'cors',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
     }).then(function (res) {
-      if(res.status === 200){
-        return res.json()
-      }
+        if(res.status === 200){
+            return res.data
+          }
     }).then(function (json) {
-
-      //console.log(typeof Array.from(json), Array.from(json));
-      context.commit('setJson', Array.from(json));
+        context.commit('setJson', Array.from(json))
     })
   }
 };
