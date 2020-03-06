@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const ceshiSchema = new Schema({
   title: String,
-  body: String,
-  footer: String
+  imgUrl: Array
 });
 
 const MyModel = mongoose.model('pic', ceshiSchema);
