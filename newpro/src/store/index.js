@@ -30,25 +30,6 @@ const actions = {
     }).then(function (json) {
         context.commit('setJson', Array.from(json))
     })
-  },
-  addData() {
-    axios.post('http://127.0.0.1:3000/addData', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      data: {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
-      }
-    }).then(function (response) {
-      console.log(response)
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
   }
 };
 

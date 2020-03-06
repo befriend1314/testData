@@ -2,7 +2,6 @@
   <div id="app">
     <div class="test">
         <button type="button" @click="getJson">从后端取json</button>
-        <button type="button" @click="addData">提交</button>
         <div class="showJson">{{json}}</div>
     </div>
   </div>
@@ -20,9 +19,6 @@ export default {
   methods: {
     getJson() {
       store.dispatch("getJson")
-    },
-    addData() {
-      store.dispatch("addData")
     }
   }
   
